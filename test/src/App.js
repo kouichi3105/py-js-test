@@ -5,7 +5,7 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const server = 'http://localhost:5000';
+const server = 'http://localhost:5000/hello';
 const post_server = 'http://localhost:5000/data';
 
 const style = { width: 400, margin: 50};
