@@ -18,3 +18,5 @@ python run.py
 「test」フォルダにReactのソースコードがあるので、それを編集することで変更できる
 
 変更後、「test」フォルダにて「npm run build」コマンドを実行する
+
+※初めて「npm run build」をする場合、その前に「npm install」の実行が必要。以降は必要ない
