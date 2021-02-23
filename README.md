@@ -13,6 +13,7 @@ cd py-js-test/flask
 python run.py
 
 ```
+pythonを実行後、ブラウザで「localhost:5000」にアクセスすると画面が表示される。
 
 ## Reactの画面を変更したい場合
 「test」フォルダにReactのソースコードがあるので、それを編集することで変更できる
