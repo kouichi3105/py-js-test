@@ -11,11 +11,11 @@ CORS(app)
 def index():
     return render_template("index.html")
 
-@app.route("/hello")
+@app.route("/get")
 def hello():
-    return "Hello World"
+    return "Get Data"
 
-@app.route("/data", methods=["POST"])
+@app.route("/post", methods=["POST"])
 def data():
     return request.get_data()
 

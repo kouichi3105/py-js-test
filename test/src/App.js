@@ -5,8 +5,8 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const server = 'http://localhost:5000/hello';
-const post_server = 'http://localhost:5000/data';
+const server = 'http://localhost:5000/get';
+const post_server = 'http://localhost:5000/post';
 
 const style = { width: 400, margin: 50};
 
@@ -17,7 +17,9 @@ export class App extends React.Component {
     super();
     this.state = {
       text: '',
-      post: ''
+      post: '',
+      sliderValues: 0,
+      st_value: 50
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -30,7 +32,6 @@ export class App extends React.Component {
       method: "GET",
     }).then(response => response.text())
     .then(text => {
-      // console.log(text);
       this.setState({text: text});
     });    
   }
@@ -38,7 +39,7 @@ export class App extends React.Component {
   handleClick2() {
     fetch(post_server, {
       method: "POST",
-      body: "test_post"
+      body: "Post Data"
     }).then(response => response.text())
     .then(text => {
       this.setState({post: text});
@@ -46,7 +47,27 @@ export class App extends React.Component {
   }
 
   onReset() {
-    this.setState({text: '',post: ''});
+    this.setState({text: '',post: '', value: 0, st_value: 50});
+  }
+
+  onSliderChange = (value) => {
+    this.setState({
+      value,
+    });
+  }
+
+  onAfterChange = (value) => {
+    console.log(value);
+  }
+
+  onStSliderChange = (st_value) => {
+    this.setState({
+      st_value,
+    });
+  }
+
+  onStAfterChange = (st_value) => {
+    console.log(st_value);
   }
 
   render() {
@@ -55,7 +76,17 @@ export class App extends React.Component {
         <header className="App-header">
           <div style={style}>
             <p>Speed</p>
-            <Slider />
+            <Slider 
+              value={this.state.value}
+              onChange={this.onSliderChange}
+              onAfterChange={this.onAfterChange}
+            />
+            <p>Steering</p>
+            <Slider 
+              value={this.state.st_value}
+              onChange={this.onStSliderChange}
+              onAfterChange={this.onStAfterChange}
+            />
             <DriveEtaIcon />
           </div>
           <Button variant="contained" color="primary" onClick={this.handleClick}>Get Data</Button>
